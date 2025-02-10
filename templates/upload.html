@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>geldigelmedi Web Uygulaması</title>
+</head>
+<body>
+    <h1>geldigelmedi - Dosya Yükleme</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="post" enctype="multipart/form-data">
+        <label>Ad Soyad Listesi (Excel dosyası):</label><br>
+        <input type="file" name="adsoyad" accept=".xlsx,.xlsm" required><br><br>
+
+        <label>Kontrol Listeleri (Excel dosyaları, birden fazla seçilebilir):</label><br>
+        <input type="file" name="kontrol" accept=".xlsx,.xlsm" multiple required><br><br>
+
+        <label>Kontrol Dosyalarında İşlenecek Sekme Adı:</label><br>
+        <input type="text" name="sheet_name" value="Kontrol"><br><br>
+
+        <input type="submit" value="Yükle ve İşle">
+    </form>
+</body>
+</html>
